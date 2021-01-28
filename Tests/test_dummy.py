@@ -1,4 +1,5 @@
 from Code import dummy
+import pytest
 
 def test_dummy_function():
     assert dummy.dummy_function()==1
