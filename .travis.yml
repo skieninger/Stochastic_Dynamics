@@ -1,0 +1,13 @@
+language: python
+python:
+  - "3.6"      # current default Python on Travis CI
+  - "3.7"
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls      # only required to get a coverage report on coveralls.io
+# command to run tests
+script:
+  - python -m pytest --cov=src
+after_success:
+  - coveralls
