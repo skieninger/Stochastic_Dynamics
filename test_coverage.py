@@ -43,6 +43,6 @@ if __name__ == "__main__":
 
     gen_badge_command = (
         f"anybadge --value={parser.coverage_value} "
-        f"--file=badges/coverage.svg --overwrite coverage"
+        f"--file=Tests/coverage_badge.svg --overwrite coverage"
     )
     subprocess.run(shlex.split(gen_badge_command))
