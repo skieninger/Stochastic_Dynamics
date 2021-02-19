@@ -5,6 +5,7 @@ Requires pytest, pytest-cov and anybadge
 from html.parser import HTMLParser
 import shlex
 import subprocess
+import sys
 
 
 class TotalCoverageParser(HTMLParser):
@@ -32,7 +33,7 @@ class TotalCoverageParser(HTMLParser):
 
 
 if __name__ == "__main__":
-    test_command = "pytest --cov-report html --cov=Code"
+    test_command = f"pytest --cov-report html {' '.join(sys.argv[1:])}"
     subprocess.run(shlex.split(test_command))
 
     with open("htmlcov/index.html") as f_:
