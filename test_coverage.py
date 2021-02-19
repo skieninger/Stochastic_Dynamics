@@ -6,6 +6,10 @@ from html.parser import HTMLParser
 import shlex
 import subprocess
 import sys
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1298fc033619d8a941b107ecd559fe18761d29bf
 
 class TotalCoverageParser(HTMLParser):
     """Hacky HTML parser
