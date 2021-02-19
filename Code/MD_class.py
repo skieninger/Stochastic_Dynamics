@@ -39,7 +39,7 @@ class MD_Simulation_1D_model_system:
             eta = np.random.normal(mean, variance, (length))
         return eta
 
-    def overdamped_Langevin_dynamics(self, random_numbers=np.array([])):
+    def compute_overdamped_Langevin_dynamics(self, random_numbers=np.array([])):
         position = np.zeros((self.total_steps + 1))
         position[0] = self.initial_position
         if random_numbers.size == 0:
@@ -53,7 +53,7 @@ class MD_Simulation_1D_model_system:
                 (2 * self.kboltz * self.temperature * self.time_step) / (self.collision_rate * self.mass)) * eta[k]
         return position
 
-    def Langevin_dynamics(self, random_numbers=np.array([])):
+    def compute_Langevin_dynamics(self, random_numbers=np.array([])):
         position = np.zeros((self.total_steps + 1))
         position[0] = self.initial_position
         velocity = np.zeros((self.total_steps + 1))

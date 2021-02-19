@@ -50,22 +50,22 @@ def test_random_number_sequence():
     assert round(abs(np.mean(eta2)),1) == 2
     assert round(abs(np.var(eta2)),1) == 3**2
 
-def test_overdamped_Langevin_dynamics():
+def test_compute_overdamped_Langevin_dynamics():
     result = np.array([ 0., -0.403117, -0.469953, -0.249351,  0.038743, -0.274638, -0.007078,  0.266478,  0.766314,  0.287189,  0.357309])
     etatest = np.array([-1.27624853, -0.12609331,  0.79115622,  0.97131991, -1.00194723, 0.91139671,  0.86785655,  1.51975771, -1.59699915,  0.15525502])
-    assert len(traj1.overdamped_Langevin_dynamics()) == 10+1
-    assert traj1.overdamped_Langevin_dynamics()[0] == 0
-    assert traj2.overdamped_Langevin_dynamics()[0] == -2
-    assert np.array_equal(np.around(traj1.overdamped_Langevin_dynamics(etatest),6), result)
+    assert len(traj1.compute_overdamped_Langevin_dynamics()) == 10+1
+    assert traj1.compute_overdamped_Langevin_dynamics()[0] == 0
+    assert traj2.compute_overdamped_Langevin_dynamics()[0] == -2
+    assert np.array_equal(np.around(traj1.compute_overdamped_Langevin_dynamics(etatest),6), result)
 
-def test_Langevin_dynamics():
+def test_compute_Langevin_dynamics():
     etatest = np.array([-1.27624853, -0.12609331, 0.79115622, 0.97131991, -1.00194723, 0.91139671, 0.86785655, 1.51975771, -1.59699915, 0.15525502])
     result_positions = np.array([ 0., -0.002011, -0.004211, -0.005155, -0.004566, -0.005561, -0.005117, -0.00331 ,  0.00088 ,  0.002534,  0.004426])
     result_velocities = np.array([ 0., -0.201056, -0.219997, -0.094432,  0.058851, -0.099467, 0.044385,  0.180678,  0.419062,  0.165422,  0.189156])
-    x, v = traj1.Langevin_dynamics(etatest)
+    x, v = traj1.compute_Langevin_dynamics(etatest)
     assert np.array_equal(np.around(x,6), result_positions)
     assert np.array_equal(np.around(v, 6), result_velocities)
     assert x[0] == 0
     assert v[0] == 0
-    assert traj2.Langevin_dynamics()[0][0] == -2
-    assert traj2.Langevin_dynamics()[1][0] == 3
+    assert traj2.compute_Langevin_dynamics()[0][0] == -2
+    assert traj2.compute_Langevin_dynamics()[1][0] == 3
