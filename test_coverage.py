@@ -5,7 +5,7 @@ Requires pytest, pytest-cov and anybadge
 from html.parser import HTMLParser
 import shlex
 import subprocess
-
+import sys
 
 class TotalCoverageParser(HTMLParser):
     """Hacky HTML parser
@@ -32,7 +32,7 @@ class TotalCoverageParser(HTMLParser):
 
 
 if __name__ == "__main__":
-    test_command = "pytest --cov-report html --cov=mdparser"
+    test_command = f"pytest --cov-report html {' '.join(sys.argv[1:])}"
     subprocess.run(shlex.split(test_command))
 
     with open("htmlcov/index.html") as f_:
@@ -43,6 +43,6 @@ if __name__ == "__main__":
 
     gen_badge_command = (
         f"anybadge --value={parser.coverage_value} "
-        f"--file=badges/coverage.svg --overwrite coverage"
+        f"--file=Tests/coverage_badge.svg --overwrite coverage"
     )
     subprocess.run(shlex.split(gen_badge_command))
