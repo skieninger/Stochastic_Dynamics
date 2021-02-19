@@ -32,7 +32,7 @@ class TotalCoverageParser(HTMLParser):
 
 
 if __name__ == "__main__":
-    test_command = "pytest --cov-report html --cov=mdparser"
+    test_command = "pytest --cov-report html --cov=Code"
     subprocess.run(shlex.split(test_command))
 
     with open("htmlcov/index.html") as f_:
