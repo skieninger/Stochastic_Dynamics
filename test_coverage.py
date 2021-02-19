@@ -7,7 +7,6 @@ import shlex
 import subprocess
 import sys
 
-
 class TotalCoverageParser(HTMLParser):
     """Hacky HTML parser
     Find total code coverage in pytest-cov output
@@ -33,7 +32,7 @@ class TotalCoverageParser(HTMLParser):
 
 
 if __name__ == "__main__":
-    test_command = f"pytest --cov-report html --cov=Code {' '.join(sys.argv[1:])}"
+    test_command = f"pytest --cov-report html --cov=Code{' '.join(sys.argv[1:])}"
     subprocess.run(shlex.split(test_command))
 
     with open("htmlcov/index.html") as f_:
